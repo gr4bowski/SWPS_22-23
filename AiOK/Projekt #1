@@ -1,0 +1,40 @@
+int latchPin = 10;
+int clockPin = 9;
+int dataPin = 11;
+int button1 = 7;
+int button2 = 6;
+int buttonState = 0;
+int counter = 0;
+
+byte leds[10] = {B11100111, B00100010, B11001011, B1101011, B00101110, B01101101, B11101101, B00100011, B11101111, B01101111};
+
+
+void setup(){
+  pinMode(latchPin, OUTPUT);
+  pinMode(dataPin, OUTPUT);
+  pinMode(clockPin, OUTPUT);
+  pinMode(button1, INPUT_PULLUP);
+  pinMode(button2, INPUT_PULLUP);
+  updateShift();
+}
+
+void loop(){
+  buttonState = digitalRead(button1);
+  if (buttonState == LOW){
+    counter++;
+    if(counter == 10)
+      counter = 0;
+    delay(1000);
+  }
+  buttonState = digitalRead(button2);
+  
+  if (buttonState == LOW){
+    updateShift();
+    delay(1000);
+  }
+}
+void updateShift(){
+  digitalWrite(latchPin, LOW);
+  shiftOut(dataPin, clockPin, LSBFIRST, leds[counter]);
+  digitalWrite(latchPin, HIGH);
+}
