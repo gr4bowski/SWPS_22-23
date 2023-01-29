@@ -6,11 +6,11 @@ matrix_filepath = "matrix.txt"
 
 vector_filepath = "vector.txt"
 
-matrix = [[]]
+matrix = int[[]]
 
 vector = []
 
-matrix = open(matrix_filepath, "r")
+matrix[[]] = open(matrix_filepath, "r")
 
 vector = open(vector_filepath, "r")
 
