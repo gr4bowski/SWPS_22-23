@@ -11,9 +11,6 @@ fun readFileToList(fileName: String) : ArrayList<String> {
     return list
 }
 
-//fun readFileUsingGetResource(fileName: String)
-//        = this::class.java.getResource(fileName).readText(Charsets.UTF_8)
-
 class Point(x: Int, y: Int) {
     private var x: Int;
     private var y : Int;
